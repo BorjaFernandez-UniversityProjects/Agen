@@ -7,14 +7,14 @@
 template <typename T>
     int grado(Agen<T>& Arbol)
     {
-        return grado(Arbol.raiz(), Arbol);
+        return gradoNodo(Arbol.raiz(), Arbol);
     }
 
 
 template <typename T>
-    int gradoNodo(Agen<T>::nodo n, Agen<T>& Arbol)
+    int gradoNodo(typename Agen<T>::nodo n, Agen<T>& Arbol)
     {
-            int nHijos, mayorActual;
+        int nHijos, mayorActual;
      
         if(n == Agen<T>::NODO_NULO)
         {
@@ -38,9 +38,10 @@ template <typename T>
     }
 
 
-
+//Precondición: 'n' no puede ser un nodo nulo.
+//Postcondición: devuelve el número de hijos del nodo 'n'.
 template <typename T>
-    int cuentaHijos(Agen<T>::nodo n, Agen<T>& Arbol)
+    int cuentaHijos(typename Agen<T>::nodo n, Agen<T>& Arbol)
     {
         int hijo, nHijos;
 
@@ -57,8 +58,10 @@ template <typename T>
     }
 
 
+//Precondición: 'n' no puede ser un nodo nulo.
+//Postcondición: devuelve el grado más alto de entre todos los hijos del nodo 'n'.
 template <typename T>
-    int maximoGradoHijos(Agen<T>::nodo n, Agen<T>& Arbol)
+    int maximoGradoHijos(typename Agen<T>::nodo n, Agen<T>& Arbol)
     {
         int mayorActual, temp;
         nodo hijo;

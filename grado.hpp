@@ -16,8 +16,9 @@ template <typename T>
 template <typename T>
     int gradoNodoRecursivo(typename Agen<T>::nodo n, Agen<T>& Arbol)
     {
-        int hijo, maxGrado;
-     
+        int maxGrado;
+        nodo hijo;
+
         if (n == Agen<T>::NODO_NULO)
         {
             return 0;

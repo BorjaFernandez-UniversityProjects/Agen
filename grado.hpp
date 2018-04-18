@@ -42,14 +42,15 @@ template <typename T>
 template <typename T>
     int cuentaHijos(typename Agen<T>::nodo n, Agen<T>& Arbol)
     {
-        int hijo, numHijos;
+        int numHijos;
+        nodo hijo;
 
         numHijos = 0;
         hijo = Arbol.hijoIzqdo(n);
 
-        while(n != NODO_NULO)
+        while (n != NODO_NULO)
         {
-            numHijos++;
+            numHijos += 1;
             hijo = Arbol.hermDrcho(n);
         }
 

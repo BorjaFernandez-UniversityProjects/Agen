@@ -3,37 +3,36 @@
 
 #include "agenCelEnlazadas.hpp"
 
-
+//Función llamadora de gradoNodoRecursivo
 template <typename T>
     int grado(Agen<T>& Arbol)
     {
-        return gradoNodo(Arbol.raiz(), Arbol);
+        return gradoNodoRecursivo(Arbol.raiz(), Arbol);
     }
 
 
+//Precondición: ninguna.
+//Postcondición: devuelve el grado de un nodo 'n' del árbol 'Arbol'.
 template <typename T>
-    int gradoNodo(typename Agen<T>::nodo n, Agen<T>& Arbol)
+    int gradoNodoRecursivo(typename Agen<T>::nodo n, Agen<T>& Arbol)
     {
-        int nHijos, mayorActual;
+        int hijo, maxGrado;
      
-        if(n == Agen<T>::NODO_NULO)
+        if (n == Agen<T>::NODO_NULO)
         {
             return 0;
         }
         else
         {
-
-            nHijos = cuentaHijos(n, Arbol);
-            mayorActual = maximoGradoHijos(n, Arbol);
-
-            if(nHijos > mayorActual)
+            maxGrado = cuentaHijos(n, Arbol);
+            hijo = Arbol.hijoIzqdo(n);
+            while (hijo != NODO_NULO)
             {
-                return nHijos;
+                maxGrado = std::max(maxGrado, gradoNodoRecursivo(hijo, Arbol));
+                hijo = Arbol.hermDrcho(n);
             }
-            else
-            {
-                return mayorActual;
-            }
+
+            return grado;
         }
     }
 
@@ -43,18 +42,18 @@ template <typename T>
 template <typename T>
     int cuentaHijos(typename Agen<T>::nodo n, Agen<T>& Arbol)
     {
-        int hijo, nHijos;
+        int hijo, numHijos;
 
-        nHijos = 0;
+        numHijos = 0;
         hijo = Arbol.hijoIzqdo(n);
 
         while(n != NODO_NULO)
         {
-            nHijos++;
+            numHijos++;
             hijo = Arbol.hermDrcho(n);
         }
 
-        return nHijos;
+        return numHijos;
     }
 
 

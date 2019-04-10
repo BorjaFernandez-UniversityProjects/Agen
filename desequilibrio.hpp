@@ -1,7 +1,8 @@
 #ifndef DESEQUILIBRIO_H
 #define DESEQUILIBRIO_H
 
-
+#include "agenCelEnlazadas.hpp"
+#include <algorithm>
 
 //Función llamadora de desequilibrioNodo
 template <typename T>
@@ -14,8 +15,7 @@ template <typename T>
 
 //Precondición: ninguna.
 //Postcondición: devuelve el desequilibrio del nodo 'n' del árbol 'Arbol'.
-template <typename t>
-    int desequilibrioNodo(Agen<T>::nodo n, Agen<T>& Arbol)
+template <typename T> int desequilibrioNodo(typename Agen<T>::nodo n, Agen<T>& Arbol)
     {
         int altMaxima, altMinima;
         nodo hijo;

@@ -11,8 +11,7 @@
 
 
 
-template <typename T> class AGEN_CEL_ENLAZADAS_H
-{
+template <typename T> class Agen{
     struct celda;
 
     public:
@@ -28,7 +27,7 @@ template <typename T> class AGEN_CEL_ENLAZADAS_H
         void insertarHijoIzqdo(nodo n, const T& e);
         void insertarHermDrcho(nodo n, const T& e);
 
-        bool arbolVacio();
+        bool arbolVacio() const;
         const T& elemento(nodo n) const;
         T& elemento(nodo n);
 
@@ -53,7 +52,7 @@ template <typename T> class AGEN_CEL_ENLAZADAS_H
                 hizq(NODO_NULO),
                 heder(NODO_NULO)
             {}
-        }
+        };
         nodo r;
 
         void destruirNodos(nodo& n);
@@ -140,7 +139,7 @@ template <typename T>
         assert(n != r);
 
         //Guardamos el hermano derecho actual.
-        nodo hedrcho = h->heder;
+        nodo hedrcho = n->heder;
         //En la posición del hermano derecho metemos el nuevo nodo.
         n->heder = new celda(e, n->padre);
         //El antiguo nodo de ese lugar se convierte en el hermano derecho del nuevo nodo.
@@ -155,7 +154,7 @@ template <typename T>
         assert(r->hizq != NODO_NULO);
 
         delete(r);
-        r = NODO_NULO);
+        r = NODO_NULO;
     }
 
 template <typename T>

@@ -38,7 +38,7 @@ template <typename T>
     }
 
 
-//Precondición: 'n' no puede ser un nodo nulo.
+//Precondición: ninguna.
 //Postcondición: devuelve el número de hijos del nodo 'n'.
 template <typename T>
     int cuentaHijos(typename Agen<T>::nodo n, Agen<T>& Arbol)
@@ -46,16 +46,22 @@ template <typename T>
         int numHijos;
         nodo hijo;
 
-        numHijos = 0;
-        hijo = Arbol.hijoIzqdo(n);
+		if (n == Agen<T>::NODO_NULO)
+		{
+			return 0;
+		}
+		else
+		{
+			numHijos = 0;
+			hijo = Arbol.hijoIzqdo(n);
+			while (hijo != NODO_NULO)
+			{
+				numHijos++;
+				hijo = Arbol.hermDrcho(n);
+			}
 
-        while (n != NODO_NULO)
-        {
-            numHijos += 1;
-            hijo = Arbol.hermDrcho(n);
-        }
-
-        return numHijos;
+			return numHijos;
+		}
     }
 
 
